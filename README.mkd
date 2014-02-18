@@ -1,0 +1,57 @@
+rebuildfm
+=========
+
+Usage:
+------
+
+List episodes
+
+    $ rebuildfm
+    ...
+    5: Ruby 2.0 (まつもとゆきひろ)
+    4: bkノート, Yak Shaving, Code Reviews (高林哲)
+    3: MessagePack (frsyuki, kiyoto)
+    2: Rails, Redis, VPS (Kenn Ejima)
+    1: Podcasting, LTSV, RubyMotion (伊藤直也)
+
+Play an episode
+
+    $ rebuildfm 1
+    1: Podcasting, LTSV, RubyMotion (伊藤直也)
+    
+    伊藤直也さん(@naoya_ito)をゲストに迎えてポッドキャスト、LTSV、RubyMotion、Perlなどについて話しました。
+    Show Notes
+    
+    * 5by5, Mule Radio
+    * Instapaper for Android
+    * LTSV, LTSV FAQ
+    * HackerNews
+    * Flipboard
+    * 開発メモ#2 : AWS でのホスト / クラウドネイティブなデプロイ
+    * Vagrant
+    * RubyMotion
+    * Getting To Know RubyMotion With Laurent Sansonetti
+    * Topaz A New Ruby
+    * Moe
+    * Perl 7, Perl 7 Final thoughts
+
+Requirements:
+-------------
+
+* golang
+* ffplay
+
+Install:
+--------
+
+    go get github.com/mattn/rebuildfm
+
+License:
+--------
+
+MIT
+
+Author:
+-------
+
+Yasuhiro Matsumoto (a.k.a mattn)
