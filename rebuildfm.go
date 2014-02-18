@@ -8,9 +8,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os/exec"
 	"strings"
-	"runtime"
 )
 
 type RSS struct {
@@ -72,16 +70,8 @@ func play(items ...Item) error {
 		fmt.Println(i.Title + "\n")
 		fmt.Println(buf.String())
 		for _, e := range i.Enclosure {
-			args := []string{"-autoexit", "-nodisp", e.URL}
-
-			if runtime.GOOS == "darwin" {
-				if err :=  _play(e.URL); err != nil {
-					return err
-				}
-			} else {
-				if err := exec.Command("ffplay", args...).Run(); err != nil {
-					return err
-				}
+			if err :=  playURL(e.URL); err != nil {
+				return err
 			}
 		}
 	}

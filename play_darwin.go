@@ -5,7 +5,7 @@ package main
 
 #import <AVFoundation/AVFoundation.h>
 
-static int play(const char* url) {
+static int _playURL(const char* url) {
     @autoreleasepool {
         NSURL* u = [NSURL URLWithString:[NSString stringWithUTF8String:url]];
 
@@ -37,14 +37,13 @@ import (
 	"errors"
 )
 
-func _play(url string) error {
+func playURL(url string) error {
 	c := C.CString(url)
 	defer C.free(unsafe.Pointer(c))
 
 	if r := C.play(c); r != 0 {
 		return errors.New("play error")
 	}
-
 	return nil
 }
 
