@@ -4,6 +4,7 @@ package main
 
 import (
 	"errors"
+	"os"
 	"os/exec"
 )
 
@@ -15,7 +16,9 @@ func playURL(url string) error {
 	}
 	f, err = exec.LookPath("mplayer")
 	if err == nil {
-		return exec.Command(f, url).Run()
+		cmd := exec.Command(f, url)
+		cmd.Stdin = os.Stdin
+		return cmd.Run()
 	}
 	return errors.New("player not found")
 }
