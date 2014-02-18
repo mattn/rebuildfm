@@ -41,7 +41,7 @@ func playURL(url string) error {
 	c := C.CString(url)
 	defer C.free(unsafe.Pointer(c))
 
-	if r := C.play(c); r != 0 {
+	if r := C._playURL(c); r != 0 {
 		return errors.New("play error")
 	}
 	return nil
