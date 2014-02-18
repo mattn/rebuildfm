@@ -6,6 +6,7 @@ import (
 	"encoding/xml"
 	"flag"
 	"fmt"
+	"github.com/daviddengcn/go-colortext"
 	"log"
 	"net/http"
 	"strings"
@@ -67,9 +68,16 @@ func play(items ...Item) error {
 		var buf bytes.Buffer
 		extractText(doc, &buf)
 
-		fmt.Println(i.Title + "\n")
+		ct.ChangeColor(ct.Green, true, ct.None, false)
+		fmt.Println(i.Title)
+		ct.ChangeColor(ct.Blue, true, ct.None, false)
+		fmt.Println(i.Link + "\n")
+		ct.ResetColor()
 		fmt.Println(buf.String())
 		for _, e := range i.Enclosure {
+			ct.ChangeColor(ct.Cyan, true, ct.None, false)
+			fmt.Println(e.URL)
+			ct.ResetColor()
 			if err :=  playURL(e.URL); err != nil {
 				return err
 			}
