@@ -39,7 +39,7 @@ Requirements:
 -------------
 
 * golang
-* ffplay
+* ffplay or avplay or mplayer
 
 Install:
 --------
