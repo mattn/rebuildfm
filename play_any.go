@@ -9,12 +9,15 @@ import (
 )
 
 func playURL(url string) error {
-	f, err := exec.LookPath("ffplay")
-	if err == nil {
-		args := []string{"-autoexit", "-nodisp", url}
-		return exec.Command(f, args...).Run()
+	for _, player := range []string{"ffplay", "avplay"} {
+		f, err := exec.LookPath(player)
+		if err == nil {
+			args := []string{"-autoexit", "-nodisp", url}
+			return exec.Command(f, args...).Run()
+		}
 	}
-	f, err = exec.LookPath("mplayer")
+
+	f, err := exec.LookPath("mplayer")
 	if err == nil {
 		cmd := exec.Command(f, url)
 		cmd.Stdin = os.Stdin
