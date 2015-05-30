@@ -111,7 +111,7 @@ func main() {
 	ep := flag.Arg(0)
 	if ep != "-" {
 		for _, i := range rss.Items.ItemList {
-			if strings.HasPrefix(i.Title, ep+":") {
+			if strings.HasSuffix(i.Link, ep+"/") {
 				err = play(i)
 				if err != nil {
 					log.Fatal(err)
